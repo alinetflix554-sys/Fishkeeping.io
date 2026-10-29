@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A beginner's guide to freshwater fishing: gear, hook sizes, knots, target species, and the best times to fish.">
+<title>First Cast Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a single field-guide column; reference tables and the hook gauge break out wider, like fold-out cards in a tackle-box manual. */
+:root {
+  --water: #eef3f1;      /* page ground, pale lake-green */
+  --paper: #ffffff;
+  --ink: #17302b;        /* deep pine */
+  --muted: #536b65;
+  --rule: #cfdcd8;
+  --bobber: #d2412c;     /* bobber red */
+  --reed: #2f6f5e;
+  --display: "Zilla Slab", Rockwell, "Courier New", serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --water: #0f1c1a; --paper: #162724; --ink: #e2ece9; --muted: #9db3ad;
+    --rule: #2b403b; --bobber: #f0684f; --reed: #6fc0a7; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --water: #0f1c1a; --paper: #162724; --ink: #e2ece9; --muted: #9db3ad;
+  --rule: #2b403b; --bobber: #f0684f; --reed: #6fc0a7; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--water); color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--body);
+  padding-inline: 16px; padding-block: 0 4rem;
+}
+.wrap { max-width: 68rem; margin: 0 auto; }
+.col { max-width: 40rem; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.1rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0; }
+a { color: var(--reed); }
+.eyebrow { font: 500 .75rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--reed); }
+
+/* hero */
+header { padding-block: 3.5rem 2.5rem; display: grid; gap: 1.25rem; }
+header h1 { font-size: clamp(2.6rem, 8vw, 4.75rem); font-weight: 700; letter-spacing: -.01em; }
+header h1 span { color: var(--bobber); }
+.lede { font-size: 1.2rem; color: var(--muted); max-width: 36rem; }
+.line { height: 2px; background: repeating-linear-gradient(90deg, var(--ink) 0 14px, transparent 14px 22px); opacity: .35; }
+
+section { padding-block: 2.75rem; border-top: 1px solid var(--rule); display: grid; gap: 1.25rem; }
+
+/* gear list */
+.gear { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.gear div { background: var(--paper); padding: 1.1rem 1.2rem; display: grid; gap: .35rem; align-content: start; }
+.gear b { font-family: var(--display); font-size: 1.1rem; }
+.gear small { font: 500 .8rem/1.4 var(--mono); color: var(--bobber); }
+
+/* hook gauge */
+.gauge { background: var(--paper); border: 1px solid var(--rule); padding: 1.25rem; overflow-x: auto; }
+.gauge svg { display: block; min-width: 36rem; width: 100%; height: auto; }
+.gauge text { font-family: var(--mono); fill: var(--ink); font-size: 13px; }
+.gauge .note { fill: var(--muted); font-size: 11px; }
+.gauge circle { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.gauge circle.hi { stroke: var(--bobber); }
+
+/* knots */
+.knots { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.25rem; }
+.knot { display: grid; gap: .6rem; align-content: start; }
+.knot ol { margin: 0; padding-left: 1.2rem; display: grid; gap: .3rem; }
+.knot .use { font-size: .95rem; color: var(--muted); }
+
+/* tables */
+.table { overflow-x: auto; border: 1px solid var(--rule); background: var(--paper); }
+table { border-collapse: collapse; width: 100%; min-width: 38rem; font-size: .98rem; }
+th, td { text-align: left; padding: .7rem 1rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font: 500 .72rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td b { font-family: var(--display); font-size: 1.05rem; }
+
+.rules { display: grid; gap: .9rem; margin: 0; padding: 0; list-style: none; }
+.rules li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .75rem; }
+.rules li::before { content: ""; width: .7rem; height: .7rem; margin-top: .5rem; border-radius: 50%; background: var(--bobber); box-shadow: inset 0 -.35rem 0 var(--paper); border: 1.5px solid var(--bobber); }
+footer { padding-top: 2rem; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule); }
+
+body { margin: 0; }
+img { max-width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Freshwater · Beginner field guide</p>
+    <h1>Your first day<br>on the <span>water</span></h1>
+    <p class="lede">What to buy, which knots to learn, and where the fish are likely to be. Enough to catch bluegill off a dock this weekend and a bass by the end of summer. If you'd rather keep fish at home, start with <a href="https://fishkeeping.io/best-beginner-fish/">the best beginner fish for a first aquarium</a>.</p>
+    <div class="line" aria-hidden="true"></div>
+  </header>
+
+  <section>
+    <p class="eyebrow">The kit</p>
+    <h2>Six things in the tackle box</h2>
+    <p class="col">A spinning combo is the easiest setup to learn. You can buy everything below for about the price of a nice dinner, and none of it needs upgrading for the first season.</p>
+    <div class="gear">
+      <div><b>Rod and reel</b><small>6'6" medium-light spinning combo</small><p>Long enough to cast a light bobber, soft enough to feel a bluegill bite.</p></div>
+      <div><b>Line</b><small>6 lb monofilament</small><p>Cheap, forgiving, and easy to tie. Respool once a season.</p></div>
+      <div><b>Hooks</b><small>#6 to #10 baitholder</small><p>Small hooks catch big fish too. Large hooks only catch big fish.</p></div>
+      <div><b>Bobbers</b><small>1" round, red and white</small><p>Sets your bait depth and tells you when a fish takes it.</p></div>
+      <div><b>Sinkers</b><small>Split shot, BB size</small><p>Pinch one 6–8" above the hook so the bait hangs straight down.</p></div>
+      <div><b>Bait</b><small>Nightcrawlers</small><p>Pinch off a 1" piece. Almost every freshwater fish will eat it.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Hook sizes</p>
+    <h2>The numbers run backwards</h2>
+    <p class="col">Plain sizes shrink as the number grows, so a #10 is smaller than a #2. After #1 the scale flips to "aught" sizes, where 1/0, 2/0 and 3/0 get bigger. The red rings are the beginner range.</p>
+    <div class="gauge">
+      <svg viewBox="0 0 640 150" role="img" aria-label="Hook sizes from #12, the smallest, to 4/0, the largest">
+        <g transform="translate(0,70)">
+          <circle cx="30"  r="5"  class="hi" style="stroke:var(--muted)"/><text x="30"  y="62" text-anchor="middle">#12</text>
+          <circle cx="85"  r="7"  class="hi"/><text x="85"  y="62" text-anchor="middle">#10</text>
+          <circle cx="145" r="9"  class="hi"/><text x="145" y="62" text-anchor="middle">#8</text>
+          <circle cx="210" r="11" class="hi"/><text x="210" y="62" text-anchor="middle">#6</text>
+          <circle cx="280" r="13"/><text x="280" y="62" text-anchor="middle">#4</text>
+          <circle cx="355" r="16"/><text x="355" y="62" text-anchor="middle">#2</text>
+          <circle cx="435" r="19"/><text x="435" y="62" text-anchor="middle">1/0</text>
+          <circle cx="520" r="23"/><text x="520" y="62" text-anchor="middle">2/0</text>
+          <circle cx="605" r="27"/><text x="605" y="62" text-anchor="middle">4/0</text>
+        </g>
+        <text x="30" y="16" class="note">smaller</text>
+        <text x="605" y="16" class="note" text-anchor="end">larger</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Knots</p>
+    <h2>Three knots cover almost everything</h2>
+    <p class="col">Wet the line with a little water or spit before you pull a knot tight. Dry line heats up from the friction and weakens.</p>
+    <div class="knots">
+      <div class="knot">
+        <h3>Improved clinch</h3>
+        <p class="use">Tie a hook or lure to mono. Learn this one first.</p>
+        <ol>
+          <li>Pass the line through the hook eye.</li>
+          <li>Wrap the tag end around the main line 5–7 times.</li>
+          <li>Thread the tag back through the small loop by the eye, then through the big loop you just made.</li>
+          <li>Wet it, pull tight, trim the tag.</li>
+        </ol>
+      </div>
+      <div class="knot">
+        <h3>Palomar</h3>
+        <p class="use">The strongest simple knot, good for braid.</p>
+        <ol>
+          <li>Double 6" of line and push the loop through the eye.</li>
+          <li>Tie a loose overhand knot with the doubled line.</li>
+          <li>Pass the hook through the loop.</li>
+          <li>Wet it, pull both strands tight, trim.</li>
+        </ol>
+      </div>
+      <div class="knot">
+        <h3>Double uni</h3>
+        <p class="use">Join two lines, such as new line to old backing.</p>
+        <ol>
+          <li>Overlap the two line ends by about 8".</li>
+          <li>With one end, tie a uni knot of 4–6 wraps around the other line.</li>
+          <li>Repeat with the second end in the other direction.</li>
+          <li>Pull the main lines apart until the knots slide together.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Target species</p>
+    <h2>What to fish for, and how</h2>
+    <p class="col">Trout need cold, oxygen-rich water and don't do well in a home tank. If you want fish that live without a heater, look at <a href="https://fishkeeping.io/cold-water-aquarium-fish/">cold-water aquarium fish</a> instead.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Fish</th><th>Where it holds</th><th>Bait</th><th>Hook</th><th>Line</th></tr></thead>
+        <tbody>
+          <tr><td><b>Bluegill</b></td><td>Docks, weed edges, shallow cover</td><td>Worm piece under a bobber</td><td class="num">#8–#10</td><td class="num">4–6 lb</td></tr>
+          <tr><td><b>Crappie</b></td><td>Brush piles and bridge pilings</td><td>Live minnow or small jig</td><td class="num">#4–#6</td><td class="num">4–6 lb</td></tr>
+          <tr><td><b>Largemouth bass</b></td><td>Lily pads, fallen trees, drop-offs</td><td>Soft plastic worm, Texas-rigged</td><td class="num">2/0–4/0</td><td class="num">10–17 lb</td></tr>
+          <tr><td><b>Channel catfish</b></td><td>Deep holes, river bends, after dark</td><td>Chicken liver or cut bait on the bottom</td><td class="num">#2–2/0</td><td class="num">12–20 lb</td></tr>
+          <tr><td><b>Rainbow trout</b></td><td>Cold, moving water and stocked ponds</td><td>Mealworm, salmon egg, small spinner</td><td class="num">#10–#14</td><td class="num">4–6 lb</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Timing</p>
+    <h2>When the fish are feeding</h2>
+    <div class="table">
+      <table>
+        <thead><tr><th>Window</th><th>Why it works</th><th>Rating</th></tr></thead>
+        <tbody>
+          <tr><td><b>First hour after sunrise</b></td><td>Low light and cool water bring fish shallow to feed.</td><td class="num">Best</td></tr>
+          <tr><td><b>Last hour before sunset</b></td><td>The same low-light feeding window, usually with warmer water.</td><td class="num">Best</td></tr>
+          <tr><td><b>Before a cold front</b></td><td>Falling barometric pressure often sets off a feeding burst.</td><td class="num">Good</td></tr>
+          <tr><td><b>Overcast midday</b></td><td>Cloud cover keeps fish active longer than bright sun does.</td><td class="num">Good</td></tr>
+          <tr><td><b>Bright summer noon</b></td><td>Fish move deep or into shade. Fish under docks and trees.</td><td class="num">Slow</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">On the bank</p>
+    <h2>Before you cast</h2>
+    <ul class="rules col">
+      <li><span><b>Buy a license.</b> Most US states require one from age 16, sold online by the state wildlife agency. Many states run a few free-fishing days each year.</span></li>
+      <li><span><b>Check the limits.</b> Size and bag limits change by lake and species. The regulations booklet lists them.</span></li>
+      <li><span><b>Wet your hands before you touch a fish</b> you plan to release. Dry hands strip the slime coat that protects it from infection.</span></li>
+      <li><span><b>Keep released fish in the water</b> while you unhook them, and use pliers on a swallowed hook. Cutting the line close is kinder than digging it out.</span></li>
+      <li><span><b>Pack out your line.</b> Discarded monofilament tangles birds and turtles for years.</span></li>
+    </ul>
+  </section>
+
+  <footer>Rules vary by state and water body. Check your local fishing regulations before you go.</footer>
+</div>
+</body>
+</html>
